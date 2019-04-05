@@ -8,5 +8,8 @@ Rails.application.routes.draw do
 
   get '/homepage', to: 'welcome#new'
 
+  resources :recipes
+  resources :ingredients
+
   root 'static#home'
 end
