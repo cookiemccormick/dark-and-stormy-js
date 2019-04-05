@@ -1,0 +1,7 @@
+<h1>Login</h1>
+
+<%= form_for @user, url: login_path do |f| %>
+  Email:<%= f.email_field :name %>
+  Password:<%= f.password_field :password %>
+  <%= f.submit "Login" %>
+<% end %>
