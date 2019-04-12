@@ -1,0 +1,30 @@
+<h1><%= @recipe.name %></h1>
+<h2>About the <%= @recipe.name %> cocktail</h2>
+<p><%= @recipe.description %></p>
+<h2>Ingredients in the <%= @recipe.name %> cocktail</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Ingredient</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recipe.recipe_ingredients.each do |ri| %>
+      <tr>
+        <td><%= ri.quantity %></td>
+        <td><%= ri.ingredient.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>How to make the <%= @recipe.name %> cocktail</h2>
+<p>
+  <%= @recipe.instructions %>
+</p>
+
+<%= link_to "Edit", edit_recipe_path(@recipe) %>
+<%= link_to "View All Recipes", recipes_path %>
