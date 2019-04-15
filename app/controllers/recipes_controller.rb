@@ -5,12 +5,11 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @recipe = @user.recipes.build(recipe_params)
+    @recipe = current_user.recipes.build(recipe_params)
     if @recipe.save
       redirect_to recipe_path(@recipe)
     else
-      redirect to recipes_path
+      redirect_to recipes_path
     end
   end
 
@@ -32,6 +31,12 @@ class RecipesController < ApplicationController
     redirect_to recipe_path(@recipe)
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to recipes_path
+  end
+
   private
 
   def recipe_params
@@ -40,8 +45,10 @@ class RecipesController < ApplicationController
       :description,
       :instructions,
       recipe_ingredients_attributes: [
+        :id,
         :quantity,
         ingredient_attributes: [
+          :id,
           :name
         ]
       ]
