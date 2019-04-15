@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:user][:password])
       @user.save
       session[:user_id] = @user.id
-      redirect_to homepage_path
+      redirect_to home_path
     else
       redirect_to signup_path
     end
