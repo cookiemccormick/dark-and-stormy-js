@@ -1,26 +1,3 @@
-<h1>Add Cocktail Recipe</h1>
+<h1>New Cocktail Recipe</h1>
 
-<%= form_for @recipe do |f| %>
-
-  Cocktail Name:<br>
-  <%= f.text_field :name %><br><br>
-
-  Description:<br>
-  <%= f.text_area :description %><br><br>
-
-  Ingredients:<br>
-  <%= f.fields_for :recipe_ingredients do |ri| %>
-    <%= ri.label :quantity %>
-    <%= ri.text_area :quantity %>
-    <%= ri.fields_for :ingredient do |i| %>
-      <%= i.label :ingredient %>
-      <%= i.text_area :name %>
-    <% end %>
-    <br>
-  <% end %><br><br>
-
-  Instructions:<br>
-  <%= f.text_area :instructions %><br><br>
-
-  <%= f.submit %>
-<% end %>
+<%= render 'form' %>
