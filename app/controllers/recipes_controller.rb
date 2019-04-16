@@ -14,7 +14,7 @@ class RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all.order(:name)
+    @recipes = Recipe.all
   end
 
   def show

@@ -8,4 +8,6 @@ class Recipe < ApplicationRecord
   validates :instructions, presence: true
 
   accepts_nested_attributes_for :recipe_ingredients, :reject_if => proc {|attr| attr[:quantity].blank? && attr[:ingredient_attributes][:name].blank?}
+
+  default_scope { order(name: :asc) }
 end
