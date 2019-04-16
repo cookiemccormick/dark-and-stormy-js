@@ -8,11 +8,16 @@
 </ul>
 
 <h2>Your Cocktail Recipes</h2>
-<ul>
-<% current_user.recipes.each do |recipe| %>
-  <li><%= recipe.name %></li>
+
+<% if current_user.no_recipes? %>
+  <p>You do not have any recipes.</p>
+<% else %>
+  <ul>
+  <% current_user.recipes.each do |recipe| %>
+    <li><%= recipe.name %></li>
+  <% end %>
+  </ul>
 <% end %>
-</ul>
 
 <%= link_to "Create Recipe", new_recipe_path %>
 

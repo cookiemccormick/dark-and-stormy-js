@@ -7,4 +7,8 @@ class User < ApplicationRecord
   validates :password, presence: true
 
   has_secure_password
+
+  def no_recipes?
+    self.recipes.count == 0
+  end
 end
