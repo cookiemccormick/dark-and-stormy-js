@@ -1,7 +1,9 @@
 <h1><%= @recipe.name %></h1>
-<h2>About the <%= @recipe.name %> cocktail</h2>
+<h2>Created by <%= @recipe.user.name %></h2>
+
+<h3>About the <%= @recipe.name %> cocktail</h3>
 <p><%= @recipe.description %></p>
-<h2>Ingredients in the <%= @recipe.name %> cocktail</h2>
+<h3>Ingredients in the <%= @recipe.name %> cocktail</h3>
 
 <table>
   <thead>
@@ -21,7 +23,7 @@
   </tbody>
 </table>
 
-<h2>How to make the <%= @recipe.name %> cocktail</h2>
+<h3>How to make the <%= @recipe.name %> cocktail</h3>
 <p>
   <%= @recipe.instructions %>
 </p>

@@ -1,0 +1,9 @@
+<h1>Cocktail Recipes by <%= @user.name %></h1>
+
+<ul>
+  <% @user.recipes.each do |recipe| %>
+  <li><%= recipe.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Create a New Recipe", new_user_recipe_path(@user) %>

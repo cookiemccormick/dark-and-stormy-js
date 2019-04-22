@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   def new
-    @recipe = Recipe.new
+    @recipe = Recipe.new(user_id: params[:user_id])
     10.times {@recipe.recipe_ingredients.build.build_ingredient }
   end
 
@@ -48,6 +48,7 @@ class RecipesController < ApplicationController
       :name,
       :description,
       :instructions,
+      :user_id,
       recipe_ingredients_attributes: [
         :id,
         :quantity,
