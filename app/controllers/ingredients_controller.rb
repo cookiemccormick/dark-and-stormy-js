@@ -16,7 +16,7 @@ class IngredientsController < ApplicationController
     if params[:recipe_id]
       @ingredients = Recipe.find(params[:recipe_id]).ingredients
     else
-      @ingredients = Ingredients.all
+      @ingredients = Ingredient.all
     end
   end
 
