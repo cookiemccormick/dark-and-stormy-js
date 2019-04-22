@@ -11,5 +11,9 @@ Rails.application.routes.draw do
   resources :recipes
   resources :ingredients
 
+  resources :users, only: [:show] do
+    resources :recipes, only: [:show, :index]
+  end
+
   root 'static#home'
 end

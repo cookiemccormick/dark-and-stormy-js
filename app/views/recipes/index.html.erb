@@ -1,7 +1,7 @@
 <h1>Cocktail Recipes</h1>
 <ul>
   <% @recipes.each do |recipe| %>
-    <li><%= link_to recipe.name, recipe %></li>
+    <li><%= link_to recipe.name, recipe %> created by: <%=link_to recipe.user.name, user_recipes_path(recipe.user) %></li>
   <% end %>
 </ul>
 
