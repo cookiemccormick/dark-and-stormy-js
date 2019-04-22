@@ -6,4 +6,8 @@
   <% end %>
 </ul>
 
-<%= link_to "Create a New Recipe", new_user_recipe_path(@user) %>
+<% if current_user.id == @user.id %>
+  <%= link_to "Create a New Recipe", new_user_recipe_path(@user) %>
+<% else %>
+  <%= link_to "Create a New Recipe", new_recipe_path %>
+<% end %>
