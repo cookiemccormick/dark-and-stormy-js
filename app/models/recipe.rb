@@ -10,4 +10,5 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :recipe_ingredients, :reject_if => proc {|attr| attr[:quantity].blank? && attr[:ingredient_attributes][:name].blank?}
 
   scope :most_recent, -> (limit) { order("created_at desc").limit(limit) }
+  scope :alphabetical_name, -> { order("name asc") }
 end
