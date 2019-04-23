@@ -1,7 +1,11 @@
 <h1>Cocktail Recipes by <%= @user.name %></h1>
 
 <ul>
+<% if @user.no_recipes? %>
+  <li><%= @user.name has no cocktail recipes %></li>
+<% else %>
   <% @user.recipes.each do |recipe| %>
-  <li><%= recipe.name %></li>
+    <li><%= recipe.name %></li>
   <% end %>
+<% end %>
 </ul>

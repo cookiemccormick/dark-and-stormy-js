@@ -1,5 +1,5 @@
 <h1><%= @recipe.name %></h1>
-<h2>Created by <%= link_to @recipe.user.name, user_path(@recipe.user) %></h2>
+<h2>Created by <%= link_to @recipe.user.name, user_recipes_path(@recipe.user) %></h2>
 
 <h3>About the <%= @recipe.name %> cocktail</h3>
 <p><%= @recipe.description %></p>

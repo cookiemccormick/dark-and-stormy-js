@@ -1,9 +1,14 @@
-<h1>Cocktail Recipes</h1>
-<ul>
+<h1>Recipes</h1>
+
+<% if @recipes.present? %>
+  <ul>
   <% @recipes.each do |recipe| %>
-    <li><%= link_to recipe.name, recipe %> created by: <%=link_to recipe.user.name, user_recipes_path(recipe.user) %></li>
+    <li><%= link_to recipe.name, recipe_path(recipe.user) %> created by <%= recipe.user.name %></li>
   <% end %>
-</ul>
+  </ul>
+<% else %>
+  <p>There are currently no recipes.</p>
+<% end %>
 
 <%= link_to "Home", home_path %>
 <%= link_to "Create a Recipe", new_recipe_path %>
