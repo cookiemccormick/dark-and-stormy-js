@@ -1,25 +1,13 @@
 <h1>Hi, <%= current_user.name %>.</h1>
 
-<h2>All Cocktail Recipes</h2>
+<h2>Recently Created Cocktail Recipes:</h2>
 <ul>
 <% @recipes.each do |recipe| %>
   <li><%= link_to recipe.name, recipe %> - created by <%= recipe.user.name %></li>
 <% end %>
 </ul>
 
-<h2>Your Cocktail Recipes</h2>
-
-<% if current_user.no_recipes? %>
-  <p>You do not have any recipes.</p>
-<% else %>
-  <ul>
-  <% current_user.recipes.each do |recipe| %>
-    <li><%= recipe.name %></li>
-  <% end %>
-  </ul>
-<% end %>
-
-<%= link_to "Create Recipe", new_recipe_path %>
+<%= link_to "Create Recipe", new_recipe_path %><br><br>
 
 <%= form_for current_user, url: logout_path, method: :post do |f| %>
   <%= f.submit "Logout" %>
