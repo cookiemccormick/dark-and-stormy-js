@@ -1,7 +1,7 @@
 <h1>Comments</h1>
 
-<ul>
-  <% @comments.each do |comment| %>
+<ul><% @comments.each do |comment| %>
+  <%= comment.recipe.name %>
     <li>
       <%= comment.body %>
     </li>
