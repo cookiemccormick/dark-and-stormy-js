@@ -7,12 +7,12 @@ class Comment < ApplicationRecord
   validates :user_id, presence: true
 
   def self.comment_count
-    if self.count == 0
-      "This recipe has no comments"
-    elsif self.count == 1
+    if count == 0
+      "This recipe has no comments."
+    elsif count == 1
       "1 comment"
     else
-      "#{self.count} comments"
+      "#{count} comments"
     end
   end
 end
