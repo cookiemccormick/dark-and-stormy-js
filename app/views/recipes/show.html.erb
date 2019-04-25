@@ -30,12 +30,13 @@
 
 <h3>Comments:</h3>
 <% if @recipe.comments.present? %>
+  <p><%= @recipe.comments.count %> comment</p>
   <ul>
-  <% @recipe.comments.each do |comment| %>
-    <li>
-      <%= comment.body %> created <%= comment.date %> by <%= comment.user.name %>
-    </li>
-  <% end %>
+    <% @recipe.comments.each do |comment| %>
+      <li>
+        <%= comment.body %> created <%= comment.date %> by <%= comment.user.name %>
+      </li>
+    <% end %>
   </ul>
 <% else %>
   <p>No comments.</p>
