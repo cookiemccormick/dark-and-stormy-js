@@ -1,9 +1,11 @@
 <h1>Comments</h1>
 
+<p><%= @comments.comment_count %></p>
+
 <ul><% @comments.each do |comment| %>
   <%= comment.recipe.name %>
     <li>
-      <%= comment.body %>
+      <%= comment.body %> created <%= comment.date %> by <%= comment.user.name %>
     </li>
   <% end %>
 </ul>
