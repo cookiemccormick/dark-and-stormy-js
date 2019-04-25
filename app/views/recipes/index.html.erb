@@ -3,7 +3,7 @@
 <% if @recipes.present? %>
   <ul>
   <% @recipes.each do |recipe| %>
-    <li><%= link_to recipe.name, recipe_path(recipe) %> created by <%= recipe.user.name %></li>
+    <li><%= link_to recipe.name, recipe_path(recipe) %> created <%= recipe.date %> by <%= recipe.user.name %></li>
   <% end %>
   </ul>
 <% else %>

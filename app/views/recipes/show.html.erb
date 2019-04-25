@@ -1,5 +1,5 @@
 <h1><%= @recipe.name %></h1>
-<h4>Created by <%= link_to @recipe.user.name, user_recipes_path(@recipe.user) %></h4>
+<h4>Created <%= @recipe.date %><br> by <%= link_to @recipe.user.name, user_recipes_path(@recipe.user) %></h4>
 
 <h3>About the <%= @recipe.name %> cocktail</h3>
 <p><%= @recipe.description %></p>
@@ -33,7 +33,7 @@
   <ul>
   <% @recipe.comments.each do |comment| %>
     <li>
-      <%= comment.body %> created by <%= comment.user.name %>
+      <%= comment.body %> created <%= comment.date %> by <%= comment.user.name %>
     </li>
   <% end %>
   </ul>
