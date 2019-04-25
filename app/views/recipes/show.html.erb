@@ -1,5 +1,5 @@
 <h1><%= @recipe.name %></h1>
-<h2>Created by <%= link_to @recipe.user.name, user_recipes_path(@recipe.user) %></h2>
+<h4>Created by <%= link_to @recipe.user.name, user_recipes_path(@recipe.user) %></h4>
 
 <h3>About the <%= @recipe.name %> cocktail</h3>
 <p><%= @recipe.description %></p>
@@ -28,5 +28,23 @@
   <%= @recipe.instructions %>
 </p>
 
+<h3>Comments:</h3>
+<% if @recipe.comments.present? %>
+  <ul>
+  <% @recipe.comments.each do |comment| %>
+    <li>
+      <%= comment.body %> created by <%= comment.user.name %>
+    </li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>No comments.</p>
+<% end %>
+
+<%= link_to "New Comment", new_recipe_comment_path(@recipe) %>
 <%= link_to "View All Recipes", recipes_path %>
 <%= link_to "Create Recipe", new_recipe_path %>
+
+<%= form_for @recipe, url: recipe_path, method: :delete do |f| %>
+  <%= f.submit "Delete" %>
+<% end %>

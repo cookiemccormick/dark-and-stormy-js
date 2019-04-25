@@ -13,8 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_04_23_175132) do
 
   create_table "comments", force: :cascade do |t|
-    t.string "content", null: false
-    t.integer "rating", null: false
+    t.string "body", null: false
     t.integer "recipe_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false

@@ -1,0 +1,7 @@
+<h2>Create Comment:</h2>
+
+<%= form_for [@recipe, @comment] do |f| %>
+  <%= f.text_area :body %>
+
+  <%= f.submit %>
+<% end %>
