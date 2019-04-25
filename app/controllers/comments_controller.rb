@@ -17,9 +17,9 @@ class CommentsController < ApplicationController
 
   def index
     if params[:recipe_id]
-      @comments = Recipe.find(params[:recipe_id]).comments
+      @comments = Recipe.find(params[:recipe_id]).comments.most_recent
     else
-      @comments = Comment.all
+      @comments = Comment.all.most_recent
     end
   end
 

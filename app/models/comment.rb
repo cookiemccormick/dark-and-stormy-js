@@ -6,6 +6,8 @@ class Comment < ApplicationRecord
   validates :recipe_id, presence: true
   validates :user_id, presence: true
 
+  scope :most_recent, -> { order("created_at desc") }
+
   def self.comment_count
     if count == 0
       "This recipe has no comments."

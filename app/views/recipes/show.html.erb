@@ -32,7 +32,7 @@
 <% if @recipe.comments.present? %>
   <%= @recipe.comments.comment_count %>
   <ul>
-    <% @recipe.comments.each do |comment| %>
+    <% @recipe.comments.most_recent.each do |comment| %>
       <li>
         <%= comment.body %> created <%= comment.date %> by <%= comment.user.name %>
       </li>
