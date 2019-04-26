@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
 
-  get '/home', to: 'welcome#new'
+  get '/home', to: 'welcome#home'
 
   resources :recipes
   resources :ingredients
