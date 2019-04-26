@@ -43,7 +43,9 @@
 <% end %>
 
 <%= link_to "New Comment", new_recipe_comment_path(@recipe) %>
+<%= link_to "Recipe Comments", recipe_comments_path(@recipe) %>
 <%= link_to "View All Recipes", recipes_path %>
+<%= link_to "Create Recipe", new_recipe_path %>
 <%= link_to "Create Recipe", new_recipe_path %>
 
 <%= form_for @recipe, url: recipe_path, method: :delete do |f| %>
