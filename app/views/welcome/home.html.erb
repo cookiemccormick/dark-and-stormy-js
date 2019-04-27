@@ -2,15 +2,15 @@
 
 <h2>Recently Created Cocktail Recipes:</h2>
 <ul>
-<% @recipes.each do |recipe| %>
-  <li><%= link_to recipe.name, recipe %> - created <%= recipe.date %> by <%= recipe.user.name %></li>
-<% end %>
+  <% @recipes.each do |recipe| %>
+    <li><%= link_to recipe.name, recipe %> - created <%= recipe.date %> by <%= recipe.user.name %></li>
+  <% end %>
 </ul>
 
 <%= link_to "Create Recipe", new_recipe_path %>
 <%= link_to "See All Recipes", recipes_path %>
 <%= link_to "See Your Recipes", user_recipes_path(current_user) %>
-<%= link_to "Browse Cocktail Makers", users_path %>
+<%= link_to "Browse Cocktail Makers", users_path %><br><br>
 
 <%= form_for current_user, url: logout_path, method: :post do |f| %>
   <%= f.submit "Logout" %>
