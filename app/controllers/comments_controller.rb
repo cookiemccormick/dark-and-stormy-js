@@ -9,9 +9,11 @@ class CommentsController < ApplicationController
     @comment = @recipe.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
+      flash[:message] = "Added comment"
       redirect_to comments_path
     else
-      redirect to root_path
+      flash[:message] = "Comment box cannot be blank."
+      redirect_to root_path
     end
   end
 
