@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
       redirect_to comments_path
     else
       flash[:message] = "Comment box cannot be blank."
-      redirect_to root_path
+      redirect_to new_recipe_comment_path
     end
   end
 
