@@ -46,8 +46,11 @@
 <%= link_to "Recipe Comments", recipe_comments_path(@recipe) %>
 <%= link_to "View All Recipes", recipes_path %>
 <%= link_to "Create Recipe", new_recipe_path %>
-<%= link_to "Create Recipe", new_recipe_path %>
 
 <%= form_for @recipe, url: recipe_path, method: :delete do |f| %>
   <%= f.submit "Delete" %>
+<% end %>
+
+<%= form_for current_user, url: logout_path, method: :post do |f| %>
+  <%= f.submit "Logout" %>
 <% end %>

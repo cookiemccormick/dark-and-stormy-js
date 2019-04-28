@@ -7,9 +7,11 @@ class RecipesController < ApplicationController
   def create
     @recipe = current_user.recipes.build(recipe_params)
     if @recipe.save
+      flash[:message] = "Successfully created recipe"
       redirect_to recipe_path(@recipe)
     else
-      redirect_to recipes_path
+      10.times { @recipe.recipe_ingredients.build.build_ingredient }
+      render :new
     end
   end
 

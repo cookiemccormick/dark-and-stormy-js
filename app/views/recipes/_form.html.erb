@@ -1,5 +1,14 @@
 <%= form_for @recipe do |f| %>
 
+  <% if @recipe.errors.any? %>
+    <h2>There were some errors: </h2>
+    <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %><br>
+
   Cocktail Name:<br>
   <%= f.text_field :name %><br><br>
 
@@ -10,6 +19,7 @@
   <%= f.fields_for :recipe_ingredients do |ri| %>
     <%= ri.label :quantity %>
     <%= ri.text_field :quantity %>
+
     <%= ri.fields_for :ingredient do |i| %>
       <%= i.label :ingredient %>
       <%= i.text_field :name %>
@@ -21,5 +31,4 @@
   <%= f.text_area :instructions %><br><br>
 
   <%= f.submit %>
-
 <% end %>

@@ -7,9 +7,14 @@ class Recipe < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
   validates :instructions, presence: true
+  validate :validate_recipe_ingredients
 
   accepts_nested_attributes_for :recipe_ingredients, :reject_if => proc {|attr| attr[:quantity].blank? && attr[:ingredient_attributes][:name].blank?}
 
   scope :most_recent, -> (limit) { order("created_at desc").limit(limit) }
   scope :alphabetical_name, -> { order("name asc") }
+
+  def validate_recipe_ingredients
+    errors.add(:recipe_ingredients, "must have at least one quantity and ingredient listed") if recipe_ingredients.length < 1
+  end
 end

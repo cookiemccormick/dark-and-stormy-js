@@ -4,4 +4,6 @@
   Email:<%= f.email_field :email %>
   Password:<%= f.password_field :password %>
   <%= f.submit "Login" %>
-<% end %>
+<% end %><br>
+
+<%= link_to "Login with Facebook!", auth_facebook_callback_path %>
