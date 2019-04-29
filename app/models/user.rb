@@ -15,8 +15,4 @@ class User < ApplicationRecord
   def downcase_fields
     email.downcase!
   end
-
-  def no_recipes?
-    self.recipes.count == 0
-  end
 end
