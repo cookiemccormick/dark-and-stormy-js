@@ -8,7 +8,13 @@ class User < ApplicationRecord
 
   has_secure_password validations: false
 
+  before_save :downcase_fields
+
   scope :alphabetical_name, -> { order("name asc") }
+
+  def downcase_fields
+    email.downcase!
+  end
 
   def no_recipes?
     self.recipes.count == 0
