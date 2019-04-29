@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   get '/home', to: 'welcome#home'
 
   resources :recipes
-  resources :ingredients
   resources :users
 
   resources :users, only: [:show] do
