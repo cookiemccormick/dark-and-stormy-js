@@ -51,7 +51,7 @@
 <%= link_to "Recipes by #{@recipe.user.name}", user_recipes_path(@recipe.user) %>
 <%= link_to "Your Recipes", user_recipes_path(current_user) %>
 
-<% if current_user.id == @recipe.user.id %>
+<% if current_user == @recipe.user %>
   <%= link_to "Edit Recipe", edit_recipe_path %>
   <%= form_for @recipe, url: recipe_path, method: :delete do |f| %>
     <%= f.submit "Delete" %>

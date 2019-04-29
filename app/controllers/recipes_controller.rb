@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   def new
     @recipe = Recipe.new(user_id: params[:user_id])
     10.times { @recipe.recipe_ingredients.build.build_ingredient }
@@ -71,5 +73,12 @@ class RecipesController < ApplicationController
         ]
       ]
     )
+  end
+
+  def correct_user
+    @recipe = Recipe.find_by(id: params[:id])
+    unless current_user == @recipe.user
+      redirect_to user_path(current_user)
+    end
   end
 end
