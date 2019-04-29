@@ -11,14 +11,13 @@ Rails.application.routes.draw do
   resources :recipes
   resources :ingredients
   resources :users
-  resources :comments
 
   resources :users, only: [:show] do
     resources :recipes, only: [:show, :index]
   end
 
   resources :recipes, only: [:show, :index] do
-    resources :comments, only: [:show, :index, :new, :create, :detroy]
+    resources :comments, only: [:index, :new, :create]
   end
 
   get '/auth/facebook/callback', to: 'sessions#create'

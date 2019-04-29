@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     if @comment.save
       flash[:message] = "Added comment"
-      redirect_to comments_path
+      redirect_to recipe_comments_path
     else
       flash[:message] = "Comment box cannot be blank."
       redirect_to new_recipe_comment_path
@@ -27,18 +27,6 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
-  end
-
-  def edit
-    @comment = Comment.find(params[:id])
-  end
-
-  def destroy
-    @comment = @recipe.comments.find(params[:id])
-    if @comment.user_id == @current_user_id
-      @comment.destroy
-    end
-    redirect_to recipe_path(@recipe)
   end
 
   private
