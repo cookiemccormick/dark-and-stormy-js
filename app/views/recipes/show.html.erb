@@ -1,5 +1,5 @@
 <h1><%= @recipe.name %></h1>
-<h4>Created <%= @recipe.date %><br> by <%= link_to @recipe.user.name, user_recipes_path(@recipe.user) %></h4>
+<h4>Created <%= @recipe.date %><br> by <%= link_to @recipe.user.name, user_path(@recipe.user) %></h4>
 
 <h3>About the <%= @recipe.name %> cocktail</h3>
 <p><%= @recipe.description %></p>
@@ -42,13 +42,20 @@
   <p>No comments.</p>
 <% end %>
 
-<%= link_to "New Comment", new_recipe_comment_path(@recipe) %>
+<%= link_to "Home", home_path %>
+<%= link_to "Add Recipe", new_recipe_path %>
+<%= link_to "Recipes", recipes_path %>
+<%= link_to "Cocktail Makers", users_path %>
+<%= link_to "Add Comment", new_recipe_comment_path(@recipe) %>
 <%= link_to "Recipe Comments", recipe_comments_path(@recipe) %>
-<%= link_to "View All Recipes", recipes_path %>
-<%= link_to "Create Recipe", new_recipe_path %>
+<%= link_to "Recipes by #{@recipe.user.name}", user_recipes_path(@recipe.user) %>
+<%= link_to "Your Recipes", user_recipes_path(current_user) %>
 
-<%= form_for @recipe, url: recipe_path, method: :delete do |f| %>
-  <%= f.submit "Delete" %>
+<% if current_user.id == @recipe.user.id %>
+  <%= link_to "Edit Recipe", edit_recipe_path %>
+  <%= form_for @recipe, url: recipe_path, method: :delete do |f| %>
+    <%= f.submit "Delete" %>
+  <% end %>
 <% end %>
 
 <%= form_for current_user, url: logout_path, method: :post do |f| %>
