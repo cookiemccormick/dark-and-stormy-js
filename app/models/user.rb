@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_secure_password validations: false
 
+  scope :alphabetical_name, -> { order("name asc") }
+
   def no_recipes?
     self.recipes.count == 0
   end
