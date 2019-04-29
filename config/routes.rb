@@ -21,5 +21,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:show, :index, :new, :create, :detroy]
   end
 
+  get '/auth/facebook/callback', to: 'sessions#create'
+
   root 'static#home'
 end

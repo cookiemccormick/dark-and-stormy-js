@@ -6,13 +6,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user && @user.authenticate(params[:user][:password])
-      @user.save
+    @user = User.create(user_params)
+    if @user.valid?
       session[:user_id] = @user.id
       redirect_to home_path
     else
-      redirect_to signup_path
+      render :new
     end
   end
 
@@ -27,6 +26,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :birthday, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

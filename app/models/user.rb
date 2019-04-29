@@ -4,10 +4,9 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :birthday, presence: true
-  validates :password, presence: true
+  validates :password, presence: true, unless: :uid?
 
-  has_secure_password
+  has_secure_password validations: false
 
   def no_recipes?
     self.recipes.count == 0

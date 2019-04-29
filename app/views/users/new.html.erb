@@ -1,9 +1,18 @@
 <h1>Signup</h1>
 
 <%= form_for @user, url: signup_path do |f| %>
+
+  <% if @user.errors.any? %>
+    <h2>There were some errors: </h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %><br>
+
   Username:<%= f.text_field :name %><br>
   Email:<%= f.email_field :email %><br>
-  Birthday:<%= f.date_field :birthday %><br>
   Password:<%= f.password_field :password %><br>
   Password Confirmation:<%= f.password_field :password_confirmation %><br><br>
 
