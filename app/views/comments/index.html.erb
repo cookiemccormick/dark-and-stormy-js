@@ -1,15 +1,15 @@
 <h1>Comments</h1>
 <h3><%= @comments.comment_count %></h3>
 
-<% @comments.each do |comment| %>
-  <h2><%= comment.recipe.name %></h2>
-  <ul>
+<ul>
+  <% @comments.each do |comment| %>
     <li>
+      <%= link_to comment.user.name, user_path(comment.user) %><br>
       <%= comment.body %><br>
-      created <%= comment.date %> by <%= comment.user.name %>
-    </li>
-  </ul>
-<% end %>
+      <%= comment.date %>
+    </li><br>
+  <% end %>
+</ul>
 
 <%= link_to "Home", home_path %>
 <%= link_to "Add Recipe", new_recipe_path %>
