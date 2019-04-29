@@ -7,7 +7,7 @@
         <li><%= message %></li>
       <% end %>
     </ul>
-  <% end %><br>
+  <% end %>
 
   Cocktail Name:<br>
   <%= f.text_field :name %><br><br>
@@ -31,4 +31,13 @@
   <%= f.text_area :instructions %><br><br>
 
   <%= f.submit %>
+<% end %><br>
+
+<%= link_to "Home", home_path %>
+<%= link_to "Recipes", recipes_path %>
+<%= link_to "Your Recipes", user_recipes_path(current_user) %>
+<%= link_to "Cocktail Makers", users_path %>
+
+<%= form_for current_user, url: logout_path, method: :post do |f| %>
+  <%= f.submit "Logout" %>
 <% end %>
