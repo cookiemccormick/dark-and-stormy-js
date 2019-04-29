@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   private
 
   def require_login
-    redirect_to signup_path unless current_user
+    flash[:message] = "You must be logged in to access this section."
+    redirect_to login_path unless current_user
   end
 end
