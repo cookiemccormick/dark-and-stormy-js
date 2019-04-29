@@ -1,11 +1,14 @@
-<h1>Cocktail Recipes by <%= @user.name %></h1>
+<h1>Profile for: <%= @user.name %></h1>
 
-<ul>
-<% if @user.no_recipes? %>
-  <li><%= @user.name has no cocktail recipes %></li>
-<% else %>
-  <% @user.recipes.each do |recipe| %>
-    <li><%= recipe.name %></li>
-  <% end %>
+<h4>Member Since: <%= @user.date %></h4>
+<p>Recipe Count: <%= @user.recipes.count %></p>
+<p>Comment Count: <%= @user.comments.count %></p>
+
+<%= link_to "Home", home_path %>
+<%= link_to "Create Recipe", new_recipe_path %>
+<%= link_to "Recipes by #{@user.name}", user_recipes_path(@user) %>
+<%= link_to "View All Recipes", recipes_path %>
+
+<%= form_for current_user, url: logout_path, method: :post do |f| %><br>
+  <%= f.submit "Logout" %>
 <% end %>
-</ul>
