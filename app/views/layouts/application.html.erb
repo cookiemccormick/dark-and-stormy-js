@@ -19,5 +19,13 @@
 
   <%= yield %>
 
+  <div>
+    <% if current_user %>
+      <%= form_for current_user, url: logout_path, method: :post do |f| %>
+        <%= f.submit "Logout" %>
+      <% end %>
+    <% end %>
+  </div>
+
   </body>
 </html>

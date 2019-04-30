@@ -22,7 +22,3 @@
 <%= link_to "Your Recipes", user_recipes_path(current_user) %>
 <%= link_to "Comments", recipe_comments_path(@recipe) %>
 <%= link_to "Cocktail Makers", users_path %><br><br>
-
-<%= form_for current_user, url: logout_path, method: :post do |f| %>
-  <%= f.submit "Logout" %>
-<% end %>

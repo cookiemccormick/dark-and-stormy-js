@@ -13,12 +13,4 @@
   <p>There are currently no recipes.</p>
 <% end %>
 
-<%= link_to "Home", home_path %>
-<%= link_to "Add Recipe", new_recipe_path %>
-<%= link_to "Recipes", recipes_path %>
-<%= link_to "Your Recipes", user_recipes_path(current_user) %>
-<%= link_to "Cocktail Makers", users_path %>
-
-<%= form_for current_user, url: logout_path, method: :post do |f| %><br>
-  <%= f.submit "Logout" %>
-<% end %>
+<%= render 'shared/links' %>

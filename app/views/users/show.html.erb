@@ -8,7 +8,3 @@
 <%= link_to "Create Recipe", new_recipe_path %>
 <%= link_to "Recipes by #{@user.name}", user_recipes_path(@user) %>
 <%= link_to "View All Recipes", recipes_path %>
-
-<%= form_for current_user, url: logout_path, method: :post do |f| %><br>
-  <%= f.submit "Logout" %>
-<% end %>
