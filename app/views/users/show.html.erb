@@ -4,7 +4,5 @@
 <p>Recipe Count: <%= @user.recipes.count %></p>
 <p>Comment Count: <%= @user.comments.count %></p>
 
-<%= link_to "Home", home_path %>
-<%= link_to "Create Recipe", new_recipe_path %>
-<%= link_to "Recipes by #{@user.name}", user_recipes_path(@user) %>
-<%= link_to "View All Recipes", recipes_path %>
+<%= render 'shared/links' %><br><br>
+<%= link_to "Recipes by #{@user.name}", user_recipes_path(@user) %><br><br>

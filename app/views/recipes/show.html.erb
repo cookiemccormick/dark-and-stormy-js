@@ -42,17 +42,13 @@
   <p>No comments.</p>
 <% end %>
 
-<%= link_to "Home", home_path %>
-<%= link_to "Add Recipe", new_recipe_path %>
-<%= link_to "Recipes", recipes_path %>
-<%= link_to "Your Recipes", user_recipes_path(current_user) %>
+<%= render 'shared/links' %><br><br>
 <%= link_to "Recipes by #{@recipe.user.name}", user_recipes_path(@recipe.user) %>
-<%= link_to "Cocktail Makers", users_path %>
 <%= link_to "Add Comment", new_recipe_comment_path(@recipe) %>
 <%= link_to "Comments", recipe_comments_path(@recipe) %>
 
 <% if current_user == @recipe.user %>
-  <%= link_to "Edit Recipe", edit_recipe_path %>
+  <%= link_to "Edit Recipe", edit_recipe_path %><br><br>
   <%= form_for @recipe, url: recipe_path, method: :delete do |f| %>
     <%= f.submit "Delete" %>
   <% end %>

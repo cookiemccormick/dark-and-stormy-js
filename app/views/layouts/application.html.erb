@@ -4,28 +4,25 @@
     <title>DarkAndStormy</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
     <div>
       <% if flash[:message] %>
         <%= flash[:message] %>
       <% end %>
     </div>
 
-  <%= yield %>
+    <%= yield %>
 
-  <div>
-    <% if current_user %>
-      <%= form_for current_user, url: logout_path, method: :post do |f| %>
-        <%= f.submit "Logout" %>
+    <div>
+      <% if current_user %>
+        <%= form_for current_user, url: logout_path, method: :post do |f| %>
+          <%= f.submit "Logout" %>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-
+    </div>
   </body>
 </html>

@@ -16,9 +16,5 @@
   <%= f.submit %>
 <% end %><br>
 
-<%= link_to "Home", home_path %>
-<%= link_to "Add Recipe", new_recipe_path %>
-<%= link_to "Recipes", recipes_path %>
-<%= link_to "Your Recipes", user_recipes_path(current_user) %>
-<%= link_to "Comments", recipe_comments_path(@recipe) %>
-<%= link_to "Cocktail Makers", users_path %><br><br>
+<%= render 'shared/links' %>
+<%= link_to "Comments", recipe_comments_path(@recipe) %><br><br>
