@@ -1,6 +1,6 @@
 class Recipe < ApplicationRecord
   belongs_to :user
-  has_many :recipe_ingredients
+  has_many :recipe_ingredients, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
   has_many :comments, dependent: :destroy
 
@@ -16,5 +16,9 @@ class Recipe < ApplicationRecord
 
   def validate_recipe_ingredients
     errors.add(:recipe_ingredients, "must have at least one quantity and ingredient listed") if recipe_ingredients.length < 1
+  end
+
+  def build_empty_ingredients
+    10.times { recipe_ingredients.build.build_ingredient }
   end
 end

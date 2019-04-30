@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new(user_id: params[:user_id])
-    10.times { @recipe.recipe_ingredients.build.build_ingredient }
+    @recipe.build_empty_ingredients
   end
 
   def create
@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
       flash[:message] = "Successfully created recipe"
       redirect_to recipe_path(@recipe)
     else
-      10.times { @recipe.recipe_ingredients.build.build_ingredient }
+      @recipe.build_empty_ingredients
       render :new
     end
   end
@@ -31,28 +31,21 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    if params[:user_id]
-      user = User.find_by(id: params[:user_id])
-      if user.nil?
-        redirect_to users_path, alert: "User not found."
-      else
-        @recipe = user.recipes.find_by(id: params[:id])
-        redirect_to user_recipes_path(user), alert: "Post not found." if @recipe.nil?
-      end
-    else
-      @recipe = Recipe.find(params[:id])
-    end
+    @recipe = Recipe.find(params[:id])
+    @recipe.build_empty_ingredients
   end
 
   def update
     @recipe = Recipe.find(params[:id])
     @recipe.update(recipe_params)
+    flash[:message] = "Recipe updated"
     redirect_to recipe_path(@recipe)
   end
 
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
+    flash[:message] = "Recipe deleted."
     redirect_to recipes_path
   end
 
@@ -78,6 +71,7 @@ class RecipesController < ApplicationController
   def correct_user
     @recipe = Recipe.find_by(id: params[:id])
     unless current_user == @recipe.user
+      flash[:message] = "This recipe belongs to another user."
       redirect_to user_path(current_user)
     end
   end
