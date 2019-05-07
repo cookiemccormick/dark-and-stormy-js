@@ -53,7 +53,6 @@ that is to say, some attribute other than its foreign keys that can be submitted
 - [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
   - comment model
     scope :most_recent, localhost:3000/recipes/7/comments/new
-    scope :comment_count, localhost:3000/recipes/4
   - recipe model
     scope :most_recent, localhost:3000/home
     scope :alphabetical_name, localhost:3000/recipes

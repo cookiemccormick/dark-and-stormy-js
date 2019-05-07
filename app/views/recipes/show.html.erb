@@ -29,8 +29,8 @@
 </p>
 
 <h3>Comments:</h3>
+<%= comment_count_label(@recipe.comments) %><br>
 <% if @recipe.comments.present? %>
-  <%= @recipe.comments.comment_count %>
   <ul>
     <% @recipe.comments.most_recent.each do |comment| %>
       <li>
@@ -38,8 +38,6 @@
       </li>
     <% end %>
   </ul>
-<% else %>
-  <p>No comments.</p>
 <% end %>
 
 <%= render 'shared/links' %><br><br>

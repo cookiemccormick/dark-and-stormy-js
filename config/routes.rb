@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :users, only: [:show] do
-    resources :recipes, only: [:show, :index]
+    resources :recipes, only: [:index]
   end
 
   resources :recipes, only: [:show, :index] do

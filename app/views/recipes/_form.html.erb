@@ -1,3 +1,11 @@
+<!--form_for -
+  - accepts the instance of the model as an argument
+  - yields an object of class FormBuilder
+  - automatically knows the standard route(it follows RESTful conventions)
+  - dynamically change the submit button
+  - form partial new and edit pages share the same form
+-->
+
 <%= form_for @recipe do |f| %>
 
   <% if @recipe.errors.any? %>

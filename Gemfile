@@ -1,6 +1,9 @@
+#Gemfile - contains all the gems that are included in the app.
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+#Ruby on Rails - A web framework, a gem, a MVC framework
 gem 'rails', '~> 5.2.3'
 gem 'sqlite3'
 gem 'puma', '~> 3.11'
