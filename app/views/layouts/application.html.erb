@@ -19,7 +19,6 @@
 
     <div>
       <% if current_user %>
-        <!--POST - used to send data enclosed in the request to the server.  The server is expected to use this data to create some new resource.-->
         <%= form_for current_user, url: logout_path, method: :post do |f| %>
           <%= f.submit "Logout" %>
         <% end %>
