@@ -29,6 +29,10 @@ class RecipesController < ApplicationController
     else
       @recipes = Recipe.all.alphabetical_name
     end
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @recipes }
+    end
   end
 
   def show

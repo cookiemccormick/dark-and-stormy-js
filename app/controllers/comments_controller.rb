@@ -22,6 +22,10 @@ class CommentsController < ApplicationController
     else
       @comments = Comment.all.most_recent
     end
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @comments }
+    end
   end
 
   def show
