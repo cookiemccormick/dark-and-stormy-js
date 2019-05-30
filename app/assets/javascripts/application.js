@@ -14,4 +14,6 @@
 //= require activestorage
 //= require jquery
 //= require jquery_ujs
+//= require comment
+//= require recipe
 //= require_tree .
