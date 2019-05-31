@@ -17,4 +17,5 @@
 //= require comment
 //= require recipe
 //= require user
+//= require ingredient
 //= require_tree .

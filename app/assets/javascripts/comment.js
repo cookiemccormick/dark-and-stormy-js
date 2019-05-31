@@ -1,7 +1,7 @@
 class Comment {
   constructor(comment) {
-    this.body = body;
-    this.recipe_id = recipe_id;
-    this.user_id = user_id;
+    this.id = comment.id;
+    this.body = comment.body;
+    this.commenter = comment.commenter;
   }
 }

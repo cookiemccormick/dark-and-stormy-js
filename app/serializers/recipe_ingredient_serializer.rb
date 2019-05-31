@@ -1,6 +1,5 @@
 class RecipeIngredientSerializer < ActiveModel::Serializer
-  attributes :id, :quantity
+  attributes :quantity
 
-  belongs_to :recipe
-  belongs_to :ingredient
+  attribute(:name) {|o| o.object.ingredient.name }
 end
