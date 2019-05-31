@@ -1,5 +1,5 @@
 class Comment {
-  constructor(body, recipe_id, user_id) {
+  constructor(comment) {
     this.body = body;
     this.recipe_id = recipe_id;
     this.user_id = user_id;
