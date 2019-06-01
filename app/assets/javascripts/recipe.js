@@ -22,13 +22,5 @@ class Recipe {
     // for (let comment of recipe.comments) {
     //   this.comments.push(new Comment(comment));
     // }
-
-
-    // let objects = [1,2,3];
-
-    // for (let i = 0; i < objects.length; i++) {
-    //   const object = objects[i];
-    //   // do something with object
-    // }
   }
 }
