@@ -7,17 +7,11 @@ class RecipesController < ApplicationController
   end
 
   def create
-    #create a brand new, unsaved, not-yet-validated Recipe object from the form.
     @recipe = current_user.recipes.build(recipe_params)
-    #the recipe is saved if valid
     if @recipe.save
       flash[:message] = "Successfully created recipe"
-      #returns a status_code of 302, which instructs the browswer to perform a NEW REQUEST!
-      #(throw @recipe away and let the show action worry about re-reading it from the database)
       redirect_to recipe_path(@recipe)
     else
-      #if the recipe is invalid, hold on to @recipe, because it is now full of useful error messages
-      #and re-render the :new page, which knows how to display them alongside the user's entries.
       @recipe.build_empty_ingredients
       render :new
     end
@@ -38,6 +32,10 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @comment = Comment.new
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @recipe }
+    end
   end
 
   def edit
