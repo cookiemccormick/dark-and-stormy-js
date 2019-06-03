@@ -1,13 +1,8 @@
-<!--Dynamic Route - pages that accept parameters & render different content based on those parameters-->
-
 <h1>Hi, <%= current_user.name %>.</h1>
 
 <h2>Recently Created Cocktail Recipes:</h2>
-<ul>
-  <% @recipes.each do |recipe| %>
-    <li><%= link_to recipe.name, recipe %> - created <%= recipe.date %> by <%= recipe.user.name %></li>
-  <% end %>
-</ul>
+
+<div id="recentRecipes"></div>
 
 <%= link_to "Add Recipe", new_recipe_path %>
 <%= link_to "Recipes", recipes_path %>
