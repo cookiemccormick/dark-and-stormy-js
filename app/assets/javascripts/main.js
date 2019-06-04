@@ -80,7 +80,7 @@ function showRecipe() {
     } else if (recipe.comments.length === 1) {
       commentCount = "<p>1 comment</p>";
     } else {
-      commentCount = `<p>${recipe.comments.length} comment</p>`;
+      commentCount = `<p>${recipe.comments.length} comments</p>`;
     }
 
     const comments = recipe.comments.map(function(comment) {
