@@ -114,7 +114,7 @@ function showRecipe() {
 
       <h3>Comments:</h3>
       <div>${commentCount}</div><br>
-      <div>${comments}</div><br>`;
+      <div>${comments.join('')}</div><br>`;
 
     $("#showRecipeData").html(html);
   });
