@@ -109,12 +109,12 @@ function showRecipe() {
         </tbody>
       </table>
 
-      <h3>How to make the ${recipe.name}</h3>
+      <h3>How to make the ${recipe.name} cocktail</h3>
       <p>${recipe.instructions}</p>
 
       <h3>Comments:</h3>
       <div>${commentCount}</div><br>
-      <div>${comments}</div>`;
+      <div>${comments}</div><br>`;
 
     $("#showRecipeData").html(html);
   });

@@ -1,49 +1,11 @@
-<h1><%= @recipe.name %></h1>
-<h4>Created <%= @recipe.date %><br> by <%= link_to @recipe.user.name, user_path(@recipe.user) %></h4>
+<a href="#" class="js-next" data-id="<%= @recipe.id %>">Next Cocktail Recipe</a>
 
-<h3>About the <%= @recipe.name %> cocktail</h3>
-<p><%= @recipe.description %></p>
-<h3>Ingredients in the <%= @recipe.name %> cocktail</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Quantity</th>
-      <th>Ingredient</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @recipe.recipe_ingredients.each do |ri| %>
-      <tr>
-        <td><%= ri.quantity %></td>
-        <td><%= ri.ingredient.name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<h3>How to make the <%= @recipe.name %> cocktail</h3>
-<p>
-  <%= @recipe.instructions %>
-</p>
-
-<h3>Comments:</h3>
-<%= comment_count_label(@recipe.comments) %><br>
-<% if @recipe.comments.present? %>
-  <ul>
-    <% @recipe.comments.most_recent.each do |comment| %>
-      <li>
-        <%= comment.body %> created <%= comment.date %> by <%= comment.user.name %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<div id="showRecipeData" data-id="<%= @recipe.id %>"></div>
 
 <%= render 'shared/links' %><br><br>
 <%= link_to "Recipes by #{@recipe.user.name}", user_recipes_path(@recipe.user) %>
 <%= link_to "Add Comment", new_recipe_comment_path(@recipe) %>
-<%= link_to "Comments", recipe_comments_path(@recipe) %>
+<%= link_to "Comments", recipe_comments_path(@recipe) %><br><br>
 
 <% if current_user == @recipe.user %>
   <%= link_to "Edit Recipe", edit_recipe_path %><br><br>
