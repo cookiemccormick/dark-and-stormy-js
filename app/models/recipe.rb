@@ -23,4 +23,12 @@ class Recipe < ApplicationRecord
   def build_empty_ingredients
     10.times { recipe_ingredients.build.build_ingredient }
   end
+
+  def next
+    Recipe.where("id > ?", id).first || Recipe.first
+  end
+
+  def previous
+    Recipe.where("id < ?", id).last || Recipe.last
+  end
 end

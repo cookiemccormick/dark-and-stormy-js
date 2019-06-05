@@ -57,6 +57,14 @@ class RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
+  def next
+    render json: Recipe.find(params[:id]).next
+  end
+
+  def previous
+    render json: Recipe.find(params[:id]).previous
+  end
+
   private
 
   def recipe_params

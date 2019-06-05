@@ -21,5 +21,8 @@ Rails.application.routes.draw do
 
   get '/auth/facebook/callback', to: 'sessions#create'
 
+  get 'recipes/:id/next', to: 'recipes#next'
+  get 'recipes/:id/previous', to: 'recipes#previous'
+
   root 'static#home'
 end
