@@ -1,4 +1,7 @@
-<a href="#" class="js-next" data-id="<%= @recipe.id %>">Next Cocktail Recipe</a>
+<div>
+  <%= button_tag "Previous Cocktail", class: "js-prev", data: {id: @recipe.id} %>
+  <%= button_tag "Next Cocktail", class: "js-next", data: {id: @recipe.id} %>
+</div>
 
 <div id="showRecipeData" data-id="<%= @recipe.id %>"></div>
 
