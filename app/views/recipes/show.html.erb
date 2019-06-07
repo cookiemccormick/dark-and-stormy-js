@@ -7,6 +7,7 @@
 
 <%= render 'shared/links' %><br><br>
 <%= link_to "Recipes by #{@recipe.user.name}", user_recipes_path(@recipe.user) %>
+<%= link_to "Comments", recipe_comments_path(@recipe) %>
 
 <% if current_user == @recipe.user %>
   <%= link_to "Edit Recipe", edit_recipe_path %><br><br>
