@@ -9,10 +9,9 @@ class CommentsController < ApplicationController
     @comment = @recipe.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
-      flash[:message] = "Sucessfully added comment."
-      redirect_to recipe_comments_path
+      render json: @comment, status: 201
     else
-      render :new
+      render json: @comment.errors.full_messages, status: 422
     end
   end
 

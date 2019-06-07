@@ -3,7 +3,10 @@ function getAllRecipes() {
     return;
   }
 
-  $.get('/recipes.json').done(function(data) {
+  const userId = $("#recipes").attr("data-user-id");
+  const url = userId.length ? `/users/${userId}/recipes.json` : '/recipes.json';
+
+  $.get(url).done(function(data) {
     const recipes = data.map(json => new Recipe(json));
 
     if (recipes.length === 0) {
@@ -117,7 +120,7 @@ function loadRecipeData(json) {
   const comments = recipe.comments.map(function(comment) {
     return `
     <li>
-      ${comment.body} created on ${comment.createdAt.toLocaleDateString()} by ${comment.commenter}
+      ${comment.commenter} - ${comment.createdAt.toLocaleDateString()} - ${comment.body}
     </li>`;
   })
 
@@ -145,8 +148,32 @@ function loadRecipeData(json) {
 
     <h3>Comments:</h3>
 
-    <div>${commentCount}</div><br>
-    <div>${comments.join('')}</div><br>`;
+    <div>${commentCount}</div>
+
+    <div><ul id="commentList">${comments.join('')}</ul></div><br>
+
+    <form id="recipeCommentForm">
+      <textarea name="comment[body]" id="comment_body"></textarea><br><br>
+      <input type="submit" name="commit" value="Add Comment"><br><br>
+    </form>`
 
   $("#showRecipeData").html(html);
+  setupCommentForm();
+}
+
+$(showRecipe);
+
+function setupCommentForm() {
+  $("#recipeCommentForm").submit(function(event) {
+    event.preventDefault();
+    const recipeId = $("#showRecipeData").attr("data-id");
+    const values = $(this).serialize();
+    const posting = $.post(`/recipes/${recipeId}/comments`, values);
+
+    posting.done(function(data) {
+      showRecipe();
+    }).error(function(response) {
+      alert(response.responseJSON.join('\n'));
+    });
+  });
 }
