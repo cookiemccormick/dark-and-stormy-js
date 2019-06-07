@@ -1,0 +1,14 @@
+<h1>Comments</h1>
+<h3><%= comment_count_label(@comments) %></h3>
+
+<ul>
+  <% @comments.each do |comment| %>
+    <li>
+      <%= link_to comment.user.name, user_path(comment.user) %><br>
+      <%= comment.body %><br>
+      <%= comment.date %>
+    </li><br>
+  <% end %>
+</ul>
+
+<%= render 'shared/links' %>
