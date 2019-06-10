@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
       @user = User.find_by(email: params[:session][:email])
       if @user && @user.authenticate(params[:session][:password])
         session[:user_id] = @user.id
+        flash[:message] = "Welcome!"
         redirect_to home_path
       else
         flash[:message] = "There was an error, please try again."
