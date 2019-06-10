@@ -117,7 +117,9 @@ function loadRecipeData(json) {
     commentCount = `<p>${recipe.comments.length} comments</p>`;
   }
 
-  const comments = recipe.comments.map(function(comment) {
+  const sortComments = recipe.comments.sort((a, b) => (b.id - a.id));
+
+  const comments = sortComments.map(function(comment) {
     return `
     <li>
       ${comment.commenter} - ${comment.createdAt.toLocaleDateString()} - ${comment.body}
