@@ -8,19 +8,5 @@ class Recipe {
     this.user = new User(recipe.user);
     this.comments = recipe.comments.map(json => new Comment(json));
     this.ingredients = recipe.ingredients.map(json => new Ingredient(json));
-
-    // for (let i = 0; i < recipe.comments.length; i++) {
-    //   const comment = recipe.comments[i];
-
-    //   this.comments.push(new Comment(comment));
-    // }
-
-    // this.comments = recipe.comments.map(function(comment) {
-    //   return new Comment(comment);
-    // })
-
-    // for (let comment of recipe.comments) {
-    //   this.comments.push(new Comment(comment));
-    // }
   }
 }
