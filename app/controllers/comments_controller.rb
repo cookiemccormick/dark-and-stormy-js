@@ -1,9 +1,4 @@
 class CommentsController < ApplicationController
-  # def new
-  #   @recipe = Recipe.find(params[:recipe_id])
-  #   @comment = Comment.new
-  # end
-
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @comment = @recipe.comments.build(comment_params)
@@ -26,10 +21,6 @@ class CommentsController < ApplicationController
       format.json { render json: @comments }
     end
   end
-
-  # def show
-  #   @comment = Comment.find(params[:id])
-  # end
 
   private
 
