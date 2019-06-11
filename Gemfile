@@ -1,5 +1,3 @@
-#Gemfile - contains all the gems that are included in the app.
-
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
