@@ -4,9 +4,9 @@ function getAllRecipes() {
   }
 
   const userId = $("#recipes").attr("data-user-id");
-  const url = userId.length ? `/users/${userId}/recipes.json` : '/recipes.json';
+  const url = userId ? `/users/${userId}/recipes.json` : '/recipes.json';
 
-  $.get(url).done(function(data) {
+  $.get(url).done((data) => {
     const recipes = data.map(json => new Recipe(json));
 
     if (recipes.length === 0) {
@@ -14,14 +14,15 @@ function getAllRecipes() {
       return;
     }
 
-    const recipeList = recipes.map(function(recipe) {
+    const recipeList = recipes.map((recipe) => {
       return `
-      <li>
-        <a href="/recipes/${recipe.id}">${recipe.name}</a>
-        created ${recipe.createdAt.toLocaleDateString()}<br>
-        ${recipe.description}<br>
-        by <a href="/users/${recipe.user.id}">${recipe.user.name}</a><br><br>
-      </li>`;
+        <li>
+          <a href="/recipes/${recipe.id}">${recipe.name}</a>
+          created ${recipe.createdAt.toLocaleDateString()}<br>
+          ${recipe.description}<br>
+          by <a href="/users/${recipe.user.id}">${recipe.user.name}</a><br><br>
+        </li>
+      `;
     })
 
     $("#recipes").html(`<ul>${recipeList.join('')}</ul>`);
@@ -35,7 +36,7 @@ function getRecentRecipes() {
     return;
   }
 
-  $.get('/home.json').done(function(data) {
+  $.get('/home.json').done((data) => {
     const recipes = data.map(json => new Recipe(json));
 
     if (recipes.length === 0) {
@@ -43,14 +44,15 @@ function getRecentRecipes() {
       return;
     }
 
-    const recipeList = recipes.map(function(recipe) {
+    const recipeList = recipes.map((recipe) => {
       return `
-      <li>
-        <a href="/recipes/${recipe.id}">${recipe.name}</a> -
-        created ${recipe.createdAt.toLocaleDateString()}
-        by ${recipe.user.name}
-      </li>`;
-    })
+        <li>
+          <a href="/recipes/${recipe.id}">${recipe.name}</a> -
+          created ${recipe.createdAt.toLocaleDateString()}
+          by ${recipe.user.name}
+        </li>
+      `;
+    });
 
     $("#recentRecipes").html(`<ul>${recipeList.join('')}</ul>`);
   });
@@ -72,9 +74,9 @@ $(showRecipe);
 
 function nextRecipe() {
   event.preventDefault();
-  $(".js-next").on("click", function() {
+  $(".js-next").on("click", () => {
     let recipeId = $("#showRecipeData").attr("data-id");
-    $.get(`/recipes/${recipeId}/next.json`).done(function(json) {
+    $.get(`/recipes/${recipeId}/next.json`).done((json) => {
       loadRecipeData(json);
       $("#showRecipeData").attr("data-id", json["id"]);
     });
@@ -85,9 +87,9 @@ $(nextRecipe);
 
 function previousRecipe() {
   event.preventDefault();
-  $(".js-prev").on("click", function() {
+  $(".js-prev").on("click", () => {
     let recipeId = $("#showRecipeData").attr("data-id");
-    $.get(`/recipes/${recipeId}/previous.json`).done(function(json) {
+    $.get(`/recipes/${recipeId}/previous.json`).done((json) => {
       loadRecipeData(json);
       $("#showRecipeData").attr("data-id", json["id"]);
     });
@@ -99,19 +101,21 @@ $(previousRecipe);
 function loadRecipeData(json) {
   const recipe = new Recipe(json);
 
-  const recipeIngredients = recipe.ingredients.map(function(ingredient) {
+  const recipeIngredients = recipe.ingredients.map((ingredient) => {
     return `
-    <tr>
-      <td>${ingredient.quantity}</td>
-      <td>${ingredient.name}</td>
-    </tr>`;
+      <tr>
+        <td>${ingredient.quantity}</td>
+        <td>${ingredient.name}</td>
+      </tr>
+    `;
   });
 
-  const comments = recipe.comments.map(function(comment) {
+  const comments = recipe.comments.map((comment) => {
     return `
-    <li>
-      ${comment.commenter} - ${comment.createdAt.toLocaleDateString()} - ${comment.body}
-    </li>`;
+      <li>
+        ${comment.commenter} - ${comment.createdAt.toLocaleDateString()} - ${comment.body}
+      </li>
+    `;
   })
 
   const html = `
@@ -148,24 +152,26 @@ function loadRecipeData(json) {
     <form id="recipeCommentForm">
       <textarea name="comment[body]" id="comment_body"></textarea><br><br>
       <input type="submit" name="commit" value="Add Comment"><br><br>
-    </form>`
+    </form>
+  `;
 
   $("#showRecipeData").html(html);
   setupCommentForm();
 }
 
-$(showRecipe);
-
 function setupCommentForm() {
-  $("#recipeCommentForm").submit(function(event) {
+  const form = $("#recipeCommentForm");
+
+  form.submit((event) => {
     event.preventDefault();
+
     const recipeId = $("#showRecipeData").attr("data-id");
-    const values = $(this).serialize();
+    const values = form.serialize();
     const posting = $.post(`/recipes/${recipeId}/comments`, values);
 
-    posting.done(function(data) {
+    posting.done((data) => {
       showRecipe();
-    }).error(function(response) {
+    }).error((response) => {
       alert(response.responseJSON.join('\n'));
     });
   });
