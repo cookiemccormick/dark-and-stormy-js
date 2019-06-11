@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
     if params[:user_id]
       @recipes = User.find(params[:user_id]).recipes.alphabetical_name
     else
-      @recipes = Recipe.all.alphabetical_name
+      @recipes = Recipe.alphabetical_name
     end
     respond_to do |format|
       format.html { render :index }
@@ -31,7 +31,6 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @comment = Comment.new
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @recipe }
