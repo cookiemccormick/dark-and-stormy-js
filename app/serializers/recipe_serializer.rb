@@ -5,4 +5,8 @@ class RecipeSerializer < ActiveModel::Serializer
 
   belongs_to :user
   has_many :comments
+
+  def comments
+    object.comments.order("created_at ASC")
+  end
 end
