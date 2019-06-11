@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :recipes, only: [:show] do
-    resources :comments, only: [:create, :index]
+    resources :comments, only: [:create]
   end
 
   get '/auth/facebook/callback', to: 'sessions#create'
