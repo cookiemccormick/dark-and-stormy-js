@@ -7,6 +7,6 @@ class RecipeSerializer < ActiveModel::Serializer
   has_many :comments
 
   def comments
-    object.comments.order("created_at ASC")
+    object.comments.by_date
   end
 end

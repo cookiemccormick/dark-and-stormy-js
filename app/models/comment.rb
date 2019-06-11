@@ -6,5 +6,5 @@ class Comment < ApplicationRecord
   validates :recipe_id, presence: true
   validates :user_id, presence: true
 
-  scope :most_recent, -> { order("created_at desc") }
+  scope :by_date, -> { order("created_at ASC") }
 end
