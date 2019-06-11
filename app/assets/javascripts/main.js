@@ -128,7 +128,8 @@ function loadRecipeData(json) {
 
   const html = `
     <h1>${recipe.name}</h1>
-    <h4>Created ${recipe.createdAt.toLocaleDateString()}<br> by <a href="/users/${recipe.user.id}">${recipe.user.name}</a></h4>
+    <h4>Created ${recipe.createdAt.toLocaleDateString()}<br> by
+      <a href="/users/${recipe.user.id}">${recipe.user.name}</a></h4>
     <h3>About the ${recipe.name} cocktail</h3>
     <p>${recipe.description}</p>
     <h3>Ingredients in the ${recipe.name} cocktail</h3>
