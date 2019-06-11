@@ -1,5 +1,3 @@
-#ActionController - controlling the flow of data between the model and the view
-#Controllers - connect the models, views and routes
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :require_login
