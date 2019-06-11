@@ -107,19 +107,7 @@ function loadRecipeData(json) {
     </tr>`;
   });
 
-  let commentCount = null;
-
-  if (recipe.comments.length === 0) {
-    commentCount = "<p>There are no comments.</p>";
-  } else if (recipe.comments.length === 1) {
-    commentCount = "<p>1 comment</p>";
-  } else {
-    commentCount = `<p>${recipe.comments.length} comments</p>`;
-  }
-
-  const sortComments = recipe.comments.sort((a, b) => (b.id - a.id));
-
-  const comments = sortComments.map(function(comment) {
+  const comments = recipe.comments.map(function(comment) {
     return `
     <li>
       ${comment.commenter} - ${comment.createdAt.toLocaleDateString()} - ${comment.body}
@@ -151,7 +139,9 @@ function loadRecipeData(json) {
 
     <h3>Comments:</h3>
 
-    <div>${commentCount}</div>
+    <div>
+      <p>${recipe.commentCountLabel()}</p>
+    </div>
 
     <div><ul id="commentList">${comments.join('')}</ul></div><br>
 
