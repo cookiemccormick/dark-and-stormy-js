@@ -4,4 +4,6 @@ class CommentSerializer < ActiveModel::Serializer
   belongs_to :recipe
 
   attribute(:commenter) {|o| o.object.user.name }
+  #Custom attribute for the user name.
+
 end

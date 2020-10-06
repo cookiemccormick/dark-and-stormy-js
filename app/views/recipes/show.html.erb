@@ -4,10 +4,11 @@
 </div>
 
 <div id="showRecipeData" data-id="<%= @recipe.id %>"></div>
+<!--Added an #showRecipeData to act as a container for the dynamically loaded content-->
+<!--We're using a data attribute to hold the recipeId to load-->
 
 <%= render 'shared/links' %><br><br>
-<%= link_to "Recipes by #{@recipe.user.name}", user_recipes_path(@recipe.user) %>
-<%= link_to "Comments", recipe_comments_path(@recipe) %>
+<%= link_to "Recipes by #{@recipe.user.name}", user_recipes_path(@recipe.user), id: "userRecipeLink"%>
 
 <% if current_user == @recipe.user %>
   <%= link_to "Edit Recipe", edit_recipe_path %><br><br>

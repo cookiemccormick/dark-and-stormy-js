@@ -26,9 +26,13 @@ class Recipe < ApplicationRecord
 
   def next
     Recipe.where("id > ?", id).first || Recipe.first
+    #Fetches the first recipe with the id greater than the recipe or the first recipe
+
   end
 
   def previous
     Recipe.where("id < ?", id).last || Recipe.last
+    #Fetches the first recipe with the id less than the recipe or the last recipe
+
   end
 end
