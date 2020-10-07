@@ -1,5 +1,8 @@
 <h1>Recipes</h1>
 
 <div id="recipes" data-user-id="<%= params[:user_id] %>"></div>
+<!--Added an #recipes to act as a container for the dynamically loaded content-->
+<!--We're using a data attribute to conditionally load recipes for a user-->
 
-<%= render 'shared/links' %><br><br>
+<%= render 'shared/links' %>
+<%= link_to "Recipes Reverse Sort", recipes_path, id: "reverseRecipes" %>
