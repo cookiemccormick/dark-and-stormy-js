@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.alphabetical_name
+    @users = User.alphabetical_name
   end
 
   private
